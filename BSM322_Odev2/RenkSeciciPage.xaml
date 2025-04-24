@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BSM322_Odev2.Views.RenkSeciciPage"
+             Title="Renk Seçici"
+             x:Name="renkSeciciPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+            <Label 
+                Text="Renk Seçici"
+                FontSize="28"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Frame BorderColor="{StaticResource Primary}" Padding="15" CornerRadius="10" Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="15">
+                    <!-- Kırmızı Renk Ayarı -->
+                    <Label Text="Kırmızı (R):" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Slider x:Name="sliderRed" Minimum="0" Maximum="255" Value="128" 
+                                ValueChanged="Slider_ValueChanged" />
+                        <Label x:Name="labelRed" Text="128" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- Yeşil Renk Ayarı -->
+                    <Label Text="Yeşil (G):" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Slider x:Name="sliderGreen" Minimum="0" Maximum="255" Value="128" 
+                                ValueChanged="Slider_ValueChanged" />
+                        <Label x:Name="labelGreen" Text="128" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- Mavi Renk Ayarı -->
+                    <Label Text="Mavi (B):" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Slider x:Name="sliderBlue" Minimum="0" Maximum="255" Value="128" 
+                                ValueChanged="Slider_ValueChanged" />
+                        <Label x:Name="labelBlue" Text="128" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Renk Gösterimi -->
+            <Frame x:Name="frameRenkGoster" 
+                   HeightRequest="100" 
+                   CornerRadius="10" 
+                   BackgroundColor="Gray"
+                   BorderColor="{StaticResource Gray500}" />
+
+            <!-- Renk Kodu ve Butonlar -->
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Renk Kodu:" FontSize="16" FontAttributes="Bold" />
+                <Label x:Name="labelRenkKodu" Text="#808080" FontSize="20" HorizontalOptions="Center" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                    <Button 
+                        Grid.Column="0"
+                        Text="Kopyala"
+                        Clicked="BtnKopyala_Clicked"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+                    <Button 
+                        Grid.Column="1"
+                        Text="Rastgele Renk"
+                        Clicked="BtnRastgeleRenk_Clicked"
+                        BackgroundColor="{StaticResource Secondary}"
+                        TextColor="White" />
+                </Grid>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

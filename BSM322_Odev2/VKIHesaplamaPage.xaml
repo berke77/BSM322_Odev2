@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BSM322_Odev2.Views.VKIHesaplamaPage"
+             Title="VKİ Hesaplama">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+            <Label 
+                Text="Vücut Kitle İndeksi Hesaplama"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center" />
+
+            <Frame BorderColor="{StaticResource Primary}" Padding="15" CornerRadius="10" Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="15">
+                    <!-- Kilo Seçimi -->
+                    <Label Text="Kilo (kg):" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Slider x:Name="sliderKilo" Minimum="30" Maximum="200" Value="70" 
+                                ValueChanged="SliderKilo_ValueChanged" />
+                        <Label x:Name="labelKilo" Text="70 kg" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- Boy Seçimi -->
+                    <Label Text="Boy (cm):" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Slider x:Name="sliderBoy" Minimum="100" Maximum="220" Value="170" 
+                                ValueChanged="SliderBoy_ValueChanged" />
+                        <Label x:Name="labelBoy" Text="170 cm" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sonuç Gösterimi -->
+            <Frame BorderColor="{StaticResource Gray300}" Padding="15" CornerRadius="10" Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Sonuç:" FontSize="18" FontAttributes="Bold" />
+                    <Label x:Name="labelVKI" Text="VKİ: -" FontSize="16" />
+                    <Label x:Name="labelVKIDurum" Text="Durum: -" FontSize="16" />
+                    <Frame x:Name="frameVKIDurum" BackgroundColor="Gray" HeightRequest="20" CornerRadius="10" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- VKİ Değer Açıklamaları -->
+            <Frame BorderColor="{StaticResource Gray300}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="VKİ Değerlendirme:" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                        <BoxView Grid.Row="0" Grid.Column="0" Color="#87CEFA" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="18.5'in altı: Zayıf" />
+
+                        <BoxView Grid.Row="1" Grid.Column="0" Color="#90EE90" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="18.5 - 24.9: Normal" />
+
+                        <BoxView Grid.Row="2" Grid.Column="0" Color="#FFD700" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="25 - 29.9: Fazla Kilolu" />
+
+                        <BoxView Grid.Row="3" Grid.Column="0" Color="#FFA500" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="30 - 34.9: Obez (I. Sınıf)" />
+
+                        <BoxView Grid.Row="4" Grid.Column="0" Color="#FF4500" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0" />
+                        <Label Grid.Row="4" Grid.Column="1" Text="35 - 39.9: Obez (II. Sınıf)" />
+
+                        <BoxView Grid.Row="5" Grid.Column="0" Color="#FF0000" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0" />
+                        <Label Grid.Row="5" Grid.Column="1" Text="40 ve üzeri: Morbid Obez" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

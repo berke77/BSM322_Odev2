@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BSM322_Odev2.Views.KrediHesaplamaPage"
+             Title="Kredi Hesaplama">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+            <Label 
+                Text="Kredi Hesaplama"
+                FontSize="28"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Frame BorderColor="{StaticResource Primary}" Padding="15" CornerRadius="10" Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="15">
+                    <!-- Kredi Türü Seçimi -->
+                    <Label Text="Kredi Türü:" FontSize="16" FontAttributes="Bold" />
+                    <Picker x:Name="pickerKrediTuru" Title="Kredi Türü Seçin">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>İhtiyaç Kredisi</x:String>
+                                <x:String>Taşıt Kredisi</x:String>
+                                <x:String>Konut Kredisi</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <!-- Kredi Tutarı -->
+                    <Label Text="Kredi Tutarı (TL):" FontSize="16" FontAttributes="Bold" />
+                    <Entry x:Name="entryKrediTutari" Placeholder="Kredi tutarını giriniz" Keyboard="Numeric" />
+
+                    <!-- Faiz Oranı -->
+                    <Label Text="Faiz Oranı (%):" FontSize="16" FontAttributes="Bold" />
+                    <Entry x:Name="entryFaizOrani" Placeholder="Yıllık faiz oranını giriniz" Keyboard="Numeric" />
+
+                    <!-- Vade (Ay) -->
+                    <Label Text="Vade (Ay): " FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Slider x:Name="sliderVade" Minimum="1" Maximum="120" Value="12" 
+                                ValueChanged="SliderVade_ValueChanged" />
+                        <Label x:Name="labelVade" Text="12 Ay" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- Hesapla Butonu -->
+                    <Button 
+                        x:Name="btnHesapla"
+                        Text="Hesapla"
+                        Clicked="BtnHesapla_Clicked"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        HorizontalOptions="Fill"
+                        Margin="0,10,0,0" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sonuç Gösterimi -->
+            <Frame BorderColor="{StaticResource Gray300}" Padding="15" CornerRadius="10" Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Sonuç:" FontSize="18" FontAttributes="Bold" />
+                    <Label x:Name="labelAylikTaksit" Text="Aylık Taksit: -" />
+                    <Label x:Name="labelToplamOdeme" Text="Toplam Ödeme: -" />
+                    <Label x:Name="labelToplamFaiz" Text="Toplam Faiz: -" />
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
